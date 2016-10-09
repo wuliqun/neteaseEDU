@@ -278,7 +278,7 @@
 			if(!video){
 				util.loadScript('js/utility/videoPlayer.js',function(){
 					video = new utility.VideoPlayer({
-						src:'https://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4',
+						src:'http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4',
 						desc:'请观看下面视频',
 						poster:'img/mork/poster.jpg'
 					});
