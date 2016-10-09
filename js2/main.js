@@ -1,15 +1,21 @@
-(function(){
+require.config({
+	baseUrl:'./js2',
+	paths:{
+		'jquery':'lib/jquery-3.1.1'
+	}
+});
+require(['jquery','util'],function($,util){	
 	var cookie = util.getCookie();
 	/*---begin顶部提示条逻辑---*/
 	//顶部提示条设置
 	if(cookie.noremind != '1'){
-		var mInfo = $s(document.body,'m-topinfo')[0].children[0];
+		var mInfo = $('.m-topinfo .g-wrap');
 		//加载topInfo模块
-		util.loadScript('js/utility/topInfo.js',function(){
-			var topinfo = new utility.TopInfo({
+		require(['js2/utility/topInfo.js'],function(TopInfo){
+			var topinfo = new TopInfo({
 				container:mInfo,
-				url:'/index-j.html',
-				msg:'本页面原生js编写，未使用任何第三方库、框架，您也可以点击查看jQuery+requireJs版本。'
+				url:'http://study.163.com/smartSpec/intro.htm#/smartSpecIntro',
+				msg:'网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！'
 			});
 			topinfo.show();
 			//关闭后设置cookie,一年过期时间
@@ -23,13 +29,13 @@
 	/*---end顶部提示条逻辑---*/
 
 	/*---begin关注按钮逻辑---*/
-	var follow = $('follow');
+	var follow = $('#follow');
 	if(cookie.followSuc == '1'){
 		//已经关注,调用关注成功函数,设置按钮样式
 		followed();
 	}else{
 		//添加点击事件
-		util.addEvent(follow,'click',followClick);
+		follow.on('click',followClick);
 	}
 	function followClick(){
 		//已经登录,直接调用关注
@@ -42,44 +48,37 @@
 	}
 	//关注
 	function doFollow(){
-		util.ajax({
-			url:'https://study.163.com/webDev/attention.htm',
-			sucCallback:function(data){
-				if(data == '1'){
-					//成功,设置cookie
-					var expire = new Date();
-					expire.setYear(expire.getFullYear()+1);
-					util.setCookie('followSuc','1',expire);
-					//调用关注成功函数
-					followed();
-					util.removeEvent(follow,'click',followClick);
-				}
+		$.get('http://study.163.com/webDev/attention.htm',function(data){
+			if(data == '1'){
+				//成功,设置cookie
+				var expire = new Date();
+				expire.setYear(expire.getFullYear()+1);
+				util.setCookie('followSuc','1',expire);
+				//调用关注成功函数
+				followed();
+				follow.off('click',followClick);
 			}
 		});
 	}
 	//关注成功
 	function followed(){
-		util.delClass(follow,'unfollow');
-		util.addClass(follow,'followed');
-		follow.innerHTML = '已关注<a>取消</a>';
+		follow.removeClass('unfollow').addClass('followed').html('已关注<a>取消</a>');
 		//点击取消delCookie,恢复关注
-		var cancelFlw = follow.children[0];
-		util.addEvent(cancelFlw,'click',function(e){
+		var cancelFlw = follow.find('a');
+		cancelFlw.on('click',function(e){
 			//删除cookie
 			util.delCookie('followSuc','1');
-			util.addClass(follow,'unfollow');
-			util.delClass(follow,'followed');
-			follow.innerHTML = '关注';
-			util.cancelBubble(e||window.event);
-			util.addEvent(follow,'click',followClick);
+			follow.removeClass('followed').addClass('unfollow').html('关注');
+			e.stopPropagation();
+			follow.on('click',followClick);
 		});
 	}
 	//调出登录窗口,设置登陆成功回调
 	function showLoginWin(){
-		util.loadScript('js/utility/loginWin.js',function()
+		require(['js2/utility/loginWin.js'],function(LoginWin)
 		{
-			var login = new utility.LoginWin({
-				action:'https://study.163.com/webDev/login.htm',
+			var login = new LoginWin({
+				action:'http://study.163.com/webDev/login.htm',
 				method:'GET',
 				title:'登录网易云课堂'
 			});
@@ -104,14 +103,15 @@
 		psize = 15;
 	}
 	var params = {//获取课程数据的请求参数
-		url:'https://study.163.com/webDev/couresByCategory.htm',
+		url:'http://study.163.com/webDev/couresByCategory.htm',
 		data:{pageNo:1,psize:psize,type:10},
-		sucCallback:setCourses
+		type:'GET',
+		dataType:'json'
 	}
 	//请求课程数据
-	util.ajax(params);
+	$.ajax(params).done(setCourses);
 	//窗口大小改变时,更新psize,重载数据
-	util.addEvent(window,'resize',function(){
+	$(window).on('resize',function(){
 		if(document.body.clientWidth < 1205){
 			params.data.psize = 15;
 		}else{
@@ -120,24 +120,24 @@
 		if(params.data.psize != psize){
 			psize = params.data.psize;
 			//psize改变时,重新请求数据以适应页面
-			util.ajax(params);
+			$.ajax(params).done(setCourses);
 		}
 	});
-	var courseUl = $('course'),//课程列表容器	
-	 	pageBox = $('page'),//翻页器容器
-	    tabs = $('tabs'),//tab切换ul
+	var courseUl = $('#course'),//课程列表容器	
+	 	pageBox = $('#page'),//翻页器容器
+	    tabs = $('#tabs'),//tab切换ul
 	    //课程列表模板
-		courseSd = util.template.parse($('courseTpl').innerHTML),
+		courseSd = util.template.parse($('#courseTpl').html()),
 		page,//翻页器对象,放在外部
 	    data;//请求获得的课程数据
 	//请求获得课程数据后,设置课程
-	function setCourses(text){
-		data = JSON.parse(text);
-		courseUl.innerHTML = util.template.merge(courseSd,data.list);
+	function setCourses(json){
+		data = json;
+		courseUl.html(util.template.merge(courseSd,data.list));
 		if(!page){//初始化翻页器
-			util.loadScript('js/utility/page.js',function()
+			require(['js2/utility/page.js'],function(Page)
 			{
-				page = new utility.Page({
+				page = new Page({
 					crt:1,
 					container:pageBox,
 					totalCount:data.totalPage,
@@ -145,75 +145,74 @@
 				});
 				//点击时翻页,注入翻页函数
 				page.on('turn',turnPage);
-			});		
-		}else{//刷新翻页器			
-			page.refresh({crt:params.data.pageNo,totalCount:data.totalPage});
-		}
+			});	
+		}	
 	}
 	// 翻页函数
 	function turnPage(idx){
 		params.data.pageNo=idx;
 		params.data.type = (crtTabIndex+1)*10;
-		util.ajax(params);
+		$.ajax(params).done(setCourses);
 	}
 	// tab切换实现			
 	var crtTabIndex = 0;//当前tab		
 	function tab(e){
-		e = e || window.event;
-		var target = util.getTarget(e,'tab-item',this);
-		if(!!target && target.className.indexOf('z-crt') < 0){	
-			util.delClass(tabs.children[crtTabIndex],'z-crt');
-			util.addClass(target,'z-crt');
+		var target = $(this);
+		if(!target.hasClass('z-crt')){	
+			tabs.find('.z-crt').removeClass('z-crt');
+			target.addClass('z-crt');
 			params.data.pageNo = 1;
-			params.data.type = util.getData(target,'type')-0;
+			params.data.type = target.data('type')-0;
 			crtTabIndex = (params.data.type-10)/10;
-			util.ajax(params);
+			$.ajax(params).done(function(json){
+				setCourses(json);
+				//tab时需要手动刷新翻页器
+				page.refresh({crt:params.data.pageNo,totalCount:data.totalPage});
+			});
 		}
 	}
-	util.addEvent(tabs,'click',tab);
+	tabs.on('click','.tab-item',tab);
 
 	//课程hover弹窗
 	var pop;//hover弹窗对象
-	util.addEvent(courseUl,'mouseover',function(e){
-		e = e || window.event;
-		var target = util.getTarget(e,'m-img',this);
-		if(!!target){
-			var index=util.getData(target,'index')-0;
-			var options = data.list[index];
-			//课程分类均为null,这里传入tab名
-			//以tab名作为分类名,只是为了好看
-			options.cate = ['产品设计','编程语言'][crtTabIndex];		
-			if(!pop){
-				util.loadScript('js/utility/pop.js',function(){
-					pop = new utility.Pop();
-					pop.show(target,options);
-				});
-			}else{
+	courseUl.on('mouseover','.m-img',function(e){
+		var target = $(this);
+		var index = target.data('index')-0;
+		var options = data.list[index];
+		//课程分类均为null,这里传入tab名
+		//以tab名作为分类名,只是为了好看
+		options.cate = ['产品设计','编程语言'][crtTabIndex];		
+		if(!pop){
+			require(['js2/utility/pop.js'],function(Pop){
+				pop = new Pop();
 				pop.show(target,options);
-			}		
-		}
+			});
+		}else{
+			pop.show(target,options);
+		}	
 	});
 	/*---end课程列表逻辑---*/
 
 	/*---begin最热列表逻辑---*/
 	var hotdata,//最热列表请求得到的数据
 		//最热列表模板
-		hotSd = util.template.parse($('hotTpl').innerHTML),
+		hotSd = util.template.parse($('#hotTpl').html()),
 		//最热列表中li模板
-		liSd = util.template.parse($('li').innerHTML),
-		hotBox = $('hot'),//最热列表容器
+		liSd = util.template.parse($('#li').html()),
+		hotBox = $('#hot'),//最热列表容器
 		hotParam = {//最热列表请求参数
-			url:'https://study.163.com/webDev/hotcouresByCategory.htm',
-			sucCallback:setHotList
+			url:'http://study.163.com/webDev/hotcouresByCategory.htm',
+			type:'GET',
+			dataType:'json'
 		};
 	//请求最热列表成功后的回调,设置最热列表
-	function setHotList(text){
-		hotdata = JSON.parse(text);
-		hotBox.innerHTML=util.template.merge(hotSd,hotdata.slice(0,11));
+	function setHotList(json){
+		hotdata = json;
+		hotBox.html(util.template.merge(hotSd,hotdata.slice(0,11)));
 		//调用函数 设置列表滚动
-		hotScroll(hotBox.children[0],10);
+		hotScroll(hotBox.find('ol'),10);
 	}
-	util.ajax(hotParam);
+	$.ajax(hotParam).done(setHotList);
 	/**
 	* [hotScroll 最热列表滚动,
 	* 思想:一共11个li,显示10个,top移动至-70px
@@ -226,30 +225,26 @@
 	*/
 	function hotScroll(hotOl,index){
 		//设置滚动定时器,5000ms执行一次
-		setInterval(function(){				
-			if(util.support('transition')){//兼容transition
-				util.animate(hotOl,'up',scrollEnd);
-			}else{
-				util.move(hotOl,{top:-70},500,scrollEnd);
-			}
+		setInterval(function(){
+			hotOl.animate({top:'-70px'},500,scrollEnd);
 		},5000);
 		//滚动完毕的回调,删除第一个,往后加一个
 		function scrollEnd(){
-			var li = hotOl.removeChild(hotOl.children[0]);
-			hotOl.style.cssText = '';
+			var li = hotOl.find('li:first').remove();
+			hotOl.css('top',0);
 			if(++index == 20){
 				index = 0;
 			}
-			li.innerHTML = util.template.merge(liSd,hotdata[index]);
-			hotOl.appendChild(li);
+			li.html(util.template.merge(liSd,hotdata[index]));
+			hotOl.append(li);
 		}
 	}
 	/*---end最热列表逻辑---*/
 
 	/*---begin banner轮播逻辑---*/
-	var banner = $('banner');
-	util.loadScript('js/utility/fadeSlider.js',function(){
-		new utility.FadeSlider({
+	var banner = $('#banner');
+	require(['js2/utility/fadeSlider.js'],function(FadeSlider){
+		new FadeSlider({
 			container:banner,
 			data:[{
 				src:'img/banner/banner1.jpg',
@@ -270,14 +265,14 @@
 	/*---end banner轮播逻辑---*/
 
 	/*---begin视频逻辑---*/
-	var videoPlay = $('play');
-	util.addEvent(videoPlay,'click',(function(){
+	var videoPlay = $('#play');
+	videoPlay.on('click',(function(){
 		var video ;
 		//闭包 video只创建一次
 		return function(){		
 			if(!video){
-				util.loadScript('js/utility/videoPlayer.js',function(){
-					video = new utility.VideoPlayer({
+				require(['js2/utility/videoPlayer.js'],function(VideoPlayer){
+					video = new VideoPlayer({
 						src:'http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4',
 						desc:'请观看下面视频',
 						poster:'img/mork/poster.jpg'
@@ -290,4 +285,4 @@
 		}
 	})());
 	/*---end视频逻辑---*/
-})();
+});
