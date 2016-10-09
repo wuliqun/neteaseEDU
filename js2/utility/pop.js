@@ -31,6 +31,7 @@ define(['jquery','util'],function($,_){
 			if(parent.find('.m-pop').length == 0){
 				this.hide();
 				this._init(options);
+				this._initEvents();
 				var body = this.body;
 				// 与关闭弹窗的定时器配合,
 				// 防止未关闭就调用show()的bug
@@ -40,7 +41,7 @@ define(['jquery','util'],function($,_){
 			}
 		},
 		hide:function(){
-			this.body.detach();			
+			this.body.remove();			
 		},
 		_initEvents:function(){
 			/**
