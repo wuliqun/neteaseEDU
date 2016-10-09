@@ -185,7 +185,10 @@
 			options.cate = ['产品设计','编程语言'][crtTabIndex];		
 			if(!pop){
 				util.loadScript('js/utility/pop.js',function(){
-					pop = new utility.Pop();
+					if(!pop){
+						//应对快速移动但js加载慢,重复进入本函数的情况
+						pop = new utility.Pop();
+					}
 					pop.show(target,options);
 				});
 			}else{

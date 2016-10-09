@@ -184,7 +184,10 @@ require(['jquery','util'],function($,util){
 		options.cate = ['产品设计','编程语言'][crtTabIndex];		
 		if(!pop){
 			require(['js2/utility/pop.js'],function(Pop){
-				pop = new Pop();
+				if(!pop){
+					//应对快速移动但js加载慢,重复进入本函数的情况
+					pop = new Pop();
+				}
 				pop.show(target,options);
 			});
 		}else{
