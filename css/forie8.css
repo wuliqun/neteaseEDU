@@ -1,0 +1,12 @@
+/* border-radius IE8不支持 圆形用背景图兼容 圆角未处理 */
+.m-sld .ctrl li{background:transparent url(../img/forie8.png) no-repeat -20px -330px;}
+.m-sld .ctrl li.z-crt{background-color:transparent;background-position:0 -330px;}
+.m-pd .pd-logo{background:transparent url(../img/forie8.png) no-repeat 0 0;}
+.m-pd .gkk .pd-logo{background-position:0 0;}
+.m-pd .ykt .pd-logo{background-position:0 -90px;}
+.m-pd .mooc .pd-logo{background-position:0 -180px;}
+/* ie8会向下偏1px导致下划线无法显示 */
+.m-pd .pd-desc a{bottom:1px;}
+.video .video-ico{width:46px;height:46px;border:0;background:transparent url(../img/forie8.png) no-repeat 0 -270px;}
+/* 遮罩层,透明度不兼容,同时不加背景无法遮挡 */
+.m-login,.m-video .video-mask{background:url(../img/forie8.png) -999px -999px no-repeat;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#cc000000",endColorstr="#cc000000");}

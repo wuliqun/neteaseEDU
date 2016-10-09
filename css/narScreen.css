@@ -1,0 +1,12 @@
+body{min-width:961px;}
+.g-wrap{width:961px;}
+.m-topinfo .info-box{margin-left:2px;}
+.hd-box{margin-left:2px;}
+.g-banner{margin-bottom:34px;}
+.m-work-envir{overflow:hidden;width:100%;padding-top:0;}
+.m-work-envir ul{margin:0 -10%;}
+.m-pd{height:200px;margin-left:2px;}
+.m-pd li{width:270px;}
+.m-pd li+li{margin-left:72px;}
+.m-pd .pd-logo{margin-right:18px;}
+.ft-msg{margin-left:7px;}
