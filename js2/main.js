@@ -48,7 +48,7 @@ require(['jquery','util'],function($,util){
 	}
 	//关注
 	function doFollow(){
-		$.get('http://study.163.com/webDev/attention.htm',function(data){
+		$.get('https://study.163.com/webDev/attention.htm',function(data){
 			if(data == '1'){
 				//成功,设置cookie
 				var expire = new Date();
@@ -78,7 +78,7 @@ require(['jquery','util'],function($,util){
 		require(['js2/utility/loginWin.js'],function(LoginWin)
 		{
 			var login = new LoginWin({
-				action:'http://study.163.com/webDev/login.htm',
+				action:'https://study.163.com/webDev/login.htm',
 				method:'GET',
 				title:'登录网易云课堂'
 			});
@@ -103,7 +103,7 @@ require(['jquery','util'],function($,util){
 		psize = 15;
 	}
 	var params = {//获取课程数据的请求参数
-		url:'http://study.163.com/webDev/couresByCategory.htm',
+		url:'https://study.163.com/webDev/couresByCategory.htm',
 		data:{pageNo:1,psize:psize,type:10},
 		type:'GET',
 		dataType:'json'
@@ -201,7 +201,7 @@ require(['jquery','util'],function($,util){
 		liSd = util.template.parse($('#li').html()),
 		hotBox = $('#hot'),//最热列表容器
 		hotParam = {//最热列表请求参数
-			url:'http://study.163.com/webDev/hotcouresByCategory.htm',
+			url:'https://study.163.com/webDev/hotcouresByCategory.htm',
 			type:'GET',
 			dataType:'json'
 		};
