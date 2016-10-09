@@ -43,7 +43,7 @@
 	//关注
 	function doFollow(){
 		util.ajax({
-			url:'http://study.163.com/webDev/attention.htm',
+			url:'https://study.163.com/webDev/attention.htm',
 			sucCallback:function(data){
 				if(data == '1'){
 					//成功,设置cookie
@@ -79,7 +79,7 @@
 		util.loadScript('js/utility/loginWin.js',function()
 		{
 			var login = new utility.LoginWin({
-				action:'http://study.163.com/webDev/login.htm',
+				action:'https://study.163.com/webDev/login.htm',
 				method:'GET',
 				title:'登录网易云课堂'
 			});
@@ -104,7 +104,7 @@
 		psize = 15;
 	}
 	var params = {//获取课程数据的请求参数
-		url:'http://study.163.com/webDev/couresByCategory.htm',
+		url:'https://study.163.com/webDev/couresByCategory.htm',
 		data:{pageNo:1,psize:psize,type:10},
 		sucCallback:setCourses
 	}
@@ -203,7 +203,7 @@
 		liSd = util.template.parse($('li').innerHTML),
 		hotBox = $('hot'),//最热列表容器
 		hotParam = {//最热列表请求参数
-			url:'http://study.163.com/webDev/hotcouresByCategory.htm',
+			url:'https://study.163.com/webDev/hotcouresByCategory.htm',
 			sucCallback:setHotList
 		};
 	//请求最热列表成功后的回调,设置最热列表
@@ -278,7 +278,7 @@
 			if(!video){
 				util.loadScript('js/utility/videoPlayer.js',function(){
 					video = new utility.VideoPlayer({
-						src:'http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4',
+						src:'https://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4',
 						desc:'请观看下面视频',
 						poster:'img/mork/poster.jpg'
 					});
