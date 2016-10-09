@@ -59,7 +59,7 @@ define(['jquery','util'],function($,_){
 			//立即触发了mouseover,清除定时器
 			body.onmouseover = function(){
 				clearInterval(timer);
-			});
+			};
 		}
 	});
 	return Pop;
