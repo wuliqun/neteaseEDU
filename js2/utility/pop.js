@@ -31,7 +31,6 @@ define(['jquery','util'],function($,_){
 			if(parent.find('.m-pop').length == 0){
 				this.hide();
 				this._init(options);
-				this._initEvents();
 				var body = this.body;
 				// 与关闭弹窗的定时器配合,
 				// 防止未关闭就调用show()的bug
@@ -41,7 +40,7 @@ define(['jquery','util'],function($,_){
 			}
 		},
 		hide:function(){
-			this.body.remove();			
+			this.body.detach();			
 		},
 		_initEvents:function(){
 			/**
@@ -52,12 +51,13 @@ define(['jquery','util'],function($,_){
 			 * 此时清除定时器
 			 */
 			var _ = this,
+				body = _.body[0],//用原生对象绑定事件,避免被清除
 				timer;
-			_.body.on('mouseout',function(){
+			body.onmouseout = function(){
 				timer = setTimeout($.proxy(_,'hide'),0);
-			});
+			};
 			//立即触发了mouseover,清除定时器
-			_.body.on('mouseover',function(){
+			body.onmouseover = function(){
 				clearInterval(timer);
 			});
 		}
