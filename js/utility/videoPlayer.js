@@ -292,6 +292,15 @@
 	        	}
         	}         	
         },
+        //鼠标悬停视频5秒不动,隐藏控制条和鼠标
+        _hideCtrl:function(){
+        	var videoCont = this.videoContent;
+        	util.delClass(videoCont,'hide-cursor');
+        	clearInterval(this.hoverTimer);
+        	this.hoverTimer = setTimeout(function(){
+        		util.addClass(videoCont,'hide-cursor');
+        	},5000);
+        },
 		show:function(){
 			this.container=this.container||document.body;
 			this.container.appendChild(this.body);
@@ -315,6 +324,7 @@
 			util.addEvent(this.video,'click',this._toggle.bind(this));
 			util.addEvent(this.video,'play',this._play.bind(this));
 			util.addEvent(this.video,'pause',this._pause.bind(this));
+			util.addEvent(this.video,'mousemove',this._hideCtrl.bind(this));
 			util.addEvent(this.playBtn,'click',this._toggle.bind(this));
 			util.addEvent(this.pause,'click',this._toggle.bind(this));
 			util.addEvent(this.full,'click',this._fullscreen.bind(this));

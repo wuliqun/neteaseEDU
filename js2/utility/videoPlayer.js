@@ -305,14 +305,14 @@ define(['jquery','util'],function($,_){
 			this.body.detach();
 			showing = !1;
 		},
-		//鼠标悬停5秒不动,隐藏控制条
+		//鼠标悬停视频5秒不动,隐藏控制条和鼠标
 		_hideCtrl:function(){
-			var ctrl = this.ctrl;
+			var videoContent = this.videoContent;
 			clearInterval(this.hoverTimer);
-			ctrl.css('top','');			
+			videoContent.removeClass('hide-cursor');		
 			this.hoverTimer = setTimeout(function(){
-				ctrl.css('top','0');
-			},3000);
+				videoContent.addClass('hide-cursor');
+			},5000);
 		},
 		_initEvents:function(){
 			$('.close-video,.video-mask',this.body).click($.proxy(this,'hide'));
