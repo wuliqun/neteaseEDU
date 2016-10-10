@@ -329,8 +329,8 @@
 			util.addEvent(this.video,'click',this._toggle.bind(this));
 			util.addEvent(this.video,'play',this._play.bind(this));
 			util.addEvent(this.video,'pause',this._pause.bind(this));
-			util.addEvent(this.video,'mousemove',this._hideCtrl.bind(this));
-			util.addEvent(this.video,'mouseout',this._hideCtrl2.bind(this));
+			util.addEvent(this.videoContent,'mousemove',this._hideCtrl.bind(this));
+			util.addEvent(this.videoContent,'mouseout',this._hideCtrl2.bind(this));
 			util.addEvent(this.playBtn,'click',this._toggle.bind(this));
 			util.addEvent(this.pause,'click',this._toggle.bind(this));
 			util.addEvent(this.full,'click',this._fullscreen.bind(this));

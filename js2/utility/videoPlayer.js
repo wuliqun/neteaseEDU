@@ -324,8 +324,8 @@ define(['jquery','util'],function($,_){
 			$('video,.play-btn,.pause',this.body).click($.proxy(this,'_toggle'));
 			this.video.on('play',$.proxy(this,'_play'));
 			this.video.on('pause',$.proxy(this,'_pause'));
-			this.video.on('mousemove',$.proxy(this,'_hideCtrl'));
-			this.video.on('mouseout',$.proxy(this,'_hideCtrl2'));
+			this.videoContent.on('mousemove',$.proxy(this,'_hideCtrl'));
+			this.videoContent.on('mouseout',$.proxy(this,'_hideCtrl2'));
 			this.full.on('click',$.proxy(this,'_fullscreen'));
 			this.seekBar.on('click',$.proxy(this,'_seek'));
 			this.soundBarBox.on('click',$.proxy(this,'_setVolume'));
