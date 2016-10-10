@@ -307,19 +307,25 @@ define(['jquery','util'],function($,_){
 		},
 		//鼠标悬停视频5秒不动,隐藏控制条和鼠标
 		_hideCtrl:function(){
-			var videoContent = this.videoContent;
+			var videoCont = this.videoContent;
 			clearInterval(this.hoverTimer);
-			videoContent.removeClass('hide-cursor');		
+			videoCont.removeClass('hide-cursor');		
 			this.hoverTimer = setTimeout(function(){
-				videoContent.addClass('hide-cursor');
+				videoCont.addClass('hide-cursor');
 			},5000);
 		},
+		//鼠标移出视频,清除定时器,隐藏控制条
+        _hideCtrl2:function(){
+        	clearInterval(this.hoverTimer);
+        	this.videoContent.addClass('hide-cursor');
+        },
 		_initEvents:function(){
 			$('.close-video,.video-mask',this.body).click($.proxy(this,'hide'));
 			$('video,.play-btn,.pause',this.body).click($.proxy(this,'_toggle'));
 			this.video.on('play',$.proxy(this,'_play'));
 			this.video.on('pause',$.proxy(this,'_pause'));
 			this.video.on('mousemove',$.proxy(this,'_hideCtrl'));
+			this.video.on('mouseout',$.proxy(this,'_hideCtrl2'));
 			this.full.on('click',$.proxy(this,'_fullscreen'));
 			this.seekBar.on('click',$.proxy(this,'_seek'));
 			this.soundBarBox.on('click',$.proxy(this,'_setVolume'));

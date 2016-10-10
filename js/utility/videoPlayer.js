@@ -301,6 +301,11 @@
         		util.addClass(videoCont,'hide-cursor');
         	},5000);
         },
+        //鼠标移出视频,清除定时器,隐藏控制条
+        _hideCtrl2:function(){
+        	clearInterval(this.hoverTimer);
+        	util.addClass(this.videoContent,'hide-cursor');
+        },
 		show:function(){
 			this.container=this.container||document.body;
 			this.container.appendChild(this.body);
@@ -325,6 +330,7 @@
 			util.addEvent(this.video,'play',this._play.bind(this));
 			util.addEvent(this.video,'pause',this._pause.bind(this));
 			util.addEvent(this.video,'mousemove',this._hideCtrl.bind(this));
+			util.addEvent(this.video,'mouseout',this._hideCtrl2.bind(this));
 			util.addEvent(this.playBtn,'click',this._toggle.bind(this));
 			util.addEvent(this.pause,'click',this._toggle.bind(this));
 			util.addEvent(this.full,'click',this._fullscreen.bind(this));

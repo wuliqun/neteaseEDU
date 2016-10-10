@@ -124,8 +124,7 @@ body{min-width:1206px;background-color:#fff;}
 .m-video .video-content:full-screen{position:fixed;left:0;top:0;height:100%;width:100%;}
 .m-video .video-content.full{position:fixed;left:0;top:0;height:100%;width:100%;}
 .m-video .video-container{width:100%;height:100%;background-color:#111;}
-.m-video .ctrl{border-top:1px solid #111;font-size:10px;line-height:21px;color:#5b5b5b;}
-.m-video .video-content:hover .ctrl{top:-29px;}
+.m-video .ctrl{top:-29px;border-top:1px solid #111;font-size:10px;line-height:21px;color:#5b5b5b;transition:top 1s;}
 /* 鼠标悬停5s不动,隐藏控制条和鼠标 */
 .m-video .video-content.hide-cursor video{cursor:none;}
 .m-video .video-content.hide-cursor .ctrl{top:0;}
