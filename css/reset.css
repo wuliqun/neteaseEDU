@@ -127,7 +127,7 @@ body{min-width:1206px;background-color:#fff;}
 .m-video .ctrl{border-top:1px solid #111;font-size:10px;line-height:21px;color:#5b5b5b;}
 .m-video .video-content:hover .ctrl{top:-29px;}
 /* 鼠标悬停5s不动,隐藏控制条和鼠标 */
-.m-video .video-content.hide-cursor{cursor:none;}
+.m-video .video-content.hide-cursor video{cursor:none;}
 .m-video .video-content.hide-cursor .ctrl{top:0;}
 .m-video .pause{left:16px;top:-76px;height:56px;width:56px;border:1px solid #3e3e3e;border-radius:3px;box-shadow:0 0 0 1px #303030;cursor:pointer;text-indent:-9999px;background:#303030 url(../img/video.png) 18px -13px;}
 .m-video .pause.playing{display:none;}
