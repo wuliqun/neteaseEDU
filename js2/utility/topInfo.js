@@ -1,4 +1,4 @@
-define(['jquery','util'],function($,_){
+define(['jquery'],function($){
 	var template = 
 	'<div class="info-box f-cb">\
 		<p class="msg f-fl"><span></span><a href="#" target="_blank">立即查看&gt;</a></p>\
@@ -20,7 +20,6 @@ define(['jquery','util'],function($,_){
 		this.close = $('.close',this.body);
 		$.extend(this,options);
 	}
-	$.extend(TopInfo.prototype,_.emiter);
 	$.extend(TopInfo.prototype,{
 		_init:function(){
 			this.msgSpan.html(this.msg);
@@ -32,7 +31,7 @@ define(['jquery','util'],function($,_){
 			this._initEvents();
 		},
 		hide:function(){
-			this.emit('close');
+			$(this).trigger('close');
 			this.body.remove();
 		},
 		_initEvents:function(){

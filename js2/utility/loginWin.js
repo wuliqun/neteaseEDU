@@ -42,7 +42,6 @@ define(['jquery','util'],function($,_){
 		this._init();
 		this._initEvents();		
 	}
-	$.extend(LoginWin.prototype,_.emiter);
 	$.extend(LoginWin.prototype,{
 		_init:function(){
 			this.asyn = this.asyn === undefined?!0:this.asyn;
@@ -135,7 +134,7 @@ define(['jquery','util'],function($,_){
 		},
 		_ajaxSuc:function(data){
 			if(data == '1'){
-				this.emit('loginSuc');
+				$(this).trigger('loginSuc');
 				this.hide();
 			}else{
 				this.logfail.html('用户名或密码错误！');

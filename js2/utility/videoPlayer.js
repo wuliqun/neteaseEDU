@@ -1,4 +1,4 @@
-define(['jquery','util'],function($,_){
+define(['jquery'],function($){
 	var template = 
 	'<div class="m-video">\
 		<div class="video-mask f-pf"></div>\
@@ -109,7 +109,6 @@ define(['jquery','util'],function($,_){
 		this._init();
 		this._initEvents();
 	}
-	$.extend(VideoPlayer.prototype,_.emiter);
 	$.extend(VideoPlayer.prototype,{
 		_init:function(){
 			var v = this.video[0];

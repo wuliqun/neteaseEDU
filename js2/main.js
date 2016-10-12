@@ -19,7 +19,7 @@ require(['jquery','util'],function($,util){
 			});
 			topinfo.show();
 			//关闭后设置cookie,一年过期时间
-			topinfo.on('close',function(){
+			$(topinfo).on('close',function(){
 				var expire = new Date();
 				expire.setYear(expire.getFullYear()+1);
 				util.setCookie('noremind','1',expire);
@@ -83,7 +83,7 @@ require(['jquery','util'],function($,util){
 				title:'登录网易云课堂'
 			});
 			//登陆成功后设置cookie,30天过期
-			login.on('loginSuc',function(){
+			$(login).on('loginSuc',function(){
 				var expire = new Date();
 				expire.setDate(expire.getDate()+30);
 				util.setCookie('loginSuc','1',expire);
@@ -144,12 +144,12 @@ require(['jquery','util'],function($,util){
 					pcount:8
 				});
 				//点击时翻页,注入翻页函数
-				page.on('turn',turnPage);
+				$(page).on('turn',turnPage);
 			});	
 		}	
 	}
 	// 翻页函数
-	function turnPage(idx){
+	function turnPage(obj,idx){
 		params.data.pageNo=idx;
 		params.data.type = (crtTabIndex+1)*10;
 		$.ajax(params).done(setCourses);

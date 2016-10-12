@@ -22,7 +22,6 @@ define(['jquery','util'],function($,_){
 		this.sd = _.template.parse(tpl);
 		this._initEvents();
 	}
-	$.extend(Pop.prototype,_.emiter);
 	$.extend(Pop.prototype,{
 		_init:function(options){
 			this.body.html(_.template.merge(this.sd,options));

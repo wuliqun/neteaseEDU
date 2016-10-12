@@ -35,7 +35,6 @@ define(['jquery','util'],function($,_){
 		this._initEvents();
 		this._show();
 	}
-	$.extend(Page.prototype,_.emiter);
 	$.extend(Page.prototype,{
 		/**
 		 * [_getData 获得模板参数 crt tCount range]
@@ -83,7 +82,7 @@ define(['jquery','util'],function($,_){
 				var target = $(this);
 				if(!target.hasClass('disable') && !target.hasClass('current')){
 					var index = target.data('index')-0;
-					_.emit('turn',index);
+					$(_).trigger('turn',index);
 					_.refresh({crt:index});
 				}
 			});

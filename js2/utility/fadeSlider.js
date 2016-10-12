@@ -1,4 +1,4 @@
-define(['jquery','util'],function($,_){
+define(['jquery'],function($){
 	var template=
 	'<div class="m-sld f-pr f-oh">\
 		<a class="slide">\
@@ -25,7 +25,6 @@ define(['jquery','util'],function($,_){
 		$.extend(this,options);
 		this._init();
 	}
-	$.extend(FadeSlider.prototype,_);
 	$.extend(FadeSlider.prototype,{
 		_init:function(){
 			var len = this.data.length,
@@ -64,6 +63,8 @@ define(['jquery','util'],function($,_){
 			this.slide(index);
 		},
 		slide:function(index){
+			//外部可以为slide前绑定事件
+			$(this).trigger('before.slide',index);
 			var crtIndex = this.link.data('index')-0;
 			if(index == crtIndex) return;
 			//设置控制点
@@ -76,6 +77,8 @@ define(['jquery','util'],function($,_){
 				src:this.data[index].src,
 				alt:this.data[index].alt || ''});
 			this._fadeIn();
+			//外部可以为slide后绑定事件
+			$(this).trigger('after.slide',index);
 		},
 		//轮播
 		_play:function(){
