@@ -1,7 +1,7 @@
 define(['jquery'],function($){
 	var template=
 	'<div class="m-sld f-pr f-oh">\
-		<a class="slide">\
+		<a class="slide" target="_blank">\
 			<img width="100%" height="100%" />\
 		</a>\
 		<div class="ctrl-box f-pa">\

@@ -288,4 +288,10 @@ require(['jquery','util'],function($,util){
 		}
 	})());
 	/*---end视频逻辑---*/
+
+	/*---start自定义滚动条---*/
+	require(['js2/utility/scrollBar.js'],function(ScrollBar){
+		new ScrollBar().show();
+	});
+	/*---end自定义滚动条---*/
 });
