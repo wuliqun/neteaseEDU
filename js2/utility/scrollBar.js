@@ -18,7 +18,7 @@ define(['jquery'],function($){
 			this._initEvents();
 		},
 		_init:function(){
-			clientHeight = this.container.height();
+			clientHeight = html.height();
 			height = this.body.height();
 			scrollbarHeight = Math.ceil(height*height/clientHeight);
 			this.scrollbar.css('height',scrollbarHeight);
@@ -49,7 +49,7 @@ define(['jquery'],function($){
 		},			
 		//滚动条滚动,distance 距离
 		_scroll:function(distance){	
-			var ch = this.container.height();
+			var ch = html.height();
 			if(ch !== clientHeight){
 				//解决由于js影响了body高度,而滚动条监测不到的bug
 				this._init();
