@@ -94,7 +94,7 @@ define(['jquery'],function($){
 			this.drag = !1;
 			//解除禁用文字选中
 			this.container.removeClass('forbid-select');
-			$(document).off('selectstart');
+			this.container.off('selectstart');
 		},
 		_click:function(e){			
 			var y = e.clientY;
