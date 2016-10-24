@@ -102,7 +102,9 @@
 				}
 			},200)
 		});
-		util.addEvent(input,'input',function(){
+		util.addEvent(input,'input',oninput);
+		util.addEvent(input,'propertychange',oninput);
+		function oninput(){
 			var value = input.value;
 			if(!value){
 				util.addClass(popContainer,'hide');
@@ -111,7 +113,7 @@
 				var data = ajaxSearch(value);
 				popContainer.innerHTML = util.template.merge(popTplID,data);
 			}
-		});
+		}
 	}
 	var morkAjaxData = {
 		courseList:[{

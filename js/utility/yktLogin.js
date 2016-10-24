@@ -126,6 +126,8 @@
 			//输入事件
 			util.addEvent(this.userInput.input,'input',this._input.bind(this,this.userInput));
 			util.addEvent(this.passInput.input,'input',this._input.bind(this,this.passInput));
+			util.addEvent(this.userInput.input,'propertychange',this._input.bind(this,this.userInput));
+			util.addEvent(this.passInput.input,'propertychange',this._input.bind(this,this.passInput));
 			//focus blur事件
 			util.addEvent(this.userInput.input,'focus',this._focus.bind(this,this.userInput));
 			util.addEvent(this.userInput.input,'blur',this._focus.bind(this,this.userInput));
