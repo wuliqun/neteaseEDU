@@ -203,21 +203,21 @@
 		util.addClass(microNext,'disable');
 	}
 	util.addEvent(microPrev,'click',function(){
-		if(this.className.indexOf('disable') < 0){
+		if(microPrev.className.indexOf('disable') < 0){
 			var left = util.getStyle(micro,'left') + singleWidth;
 			micro.style.left = left+'px';
 			if(left == 0){//到达边界,禁用prev
-				util.addClass(this,'disable');
+				util.addClass(microPrev,'disable');
 			}
 			util.delClass(microNext,'disable');					
 		}
 	});
 	util.addEvent(microNext,'click',function(){
-		if(this.className.indexOf('disable') < 0){
+		if(microNext.className.indexOf('disable') < 0){
 			var left = util.getStyle(micro,'left') - singleWidth;
 			micro.style.left = left+'px';
 			if(left + (count-4)*singleWidth == 0){//到达边界,禁用next
-				util.addClass(this,'disable');
+				util.addClass(microNext,'disable');
 			}
 			util.delClass(microPrev,'disable');	
 		}

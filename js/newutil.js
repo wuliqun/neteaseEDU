@@ -84,7 +84,7 @@ var util = {
     },
     //preventDft 阻止默认事件
     preventDft:function (e){
-        if(e.preventDefault()){
+        if(e.preventDefault){
             e.preventDefault()
         }else{
             e.returnValue = false;

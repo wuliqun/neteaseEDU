@@ -134,12 +134,12 @@ img.scale:hover{transform:scale(1.15);}
 .m-sld .next:hover{background-position:-66px -95px;}
 /* 分类 */
 .banner .m-cate{width:224px;height:439px;margin-top:-439px;}
-.m-cate .cate-mask{height:438px;opacity:0.7;filter:alpha(opacity=70);background-color:#000;}
+.m-cate .cate-mask{height:438px;opacity:0.5;filter:alpha(opacity=50);background-color:#000;}
 .m-cate .cate-nav{left:0;top:0;width:224px;border-bottom:1px solid #31a030;}
 .m-cate .cate{width:224px;line-height:62px;}
 .m-cate .cate p{overflow:hidden;height:62px;margin:0 13px;border-bottom:1px solid #656b6d;}
 .m-cate .cate p.short{height:61px;line-height:61px;}
-.m-cate .cate:last-child p{border-bottom:0;}
+.m-cate .cate.last p{border-bottom:0;}
 .m-cate .cate a{float:left;color:#fff;}
 .m-cate .cate a:hover{text-decoration:underline;}
 .m-cate .cate a.bg{margin-left:5px;font-size:16px;}
