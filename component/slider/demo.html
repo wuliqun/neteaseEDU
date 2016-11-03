@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SLIDE</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/slide.css">
+<style>
+body{padding-bottom:200px;font-family:'microsoft Yahei'}
+h2{font-size:20px;}
+.banner163 .container{width:1205px;height:440px;margin:0 auto;}
+.bannerqy{position: relative;}
+.bannerqy .titles{position:absolute;z-index:2;top:35px;right:80px;width:218px;padding:2px 1px;border:1px solid #3a3a38;border-radius:4px;background-color:#0e0e0e;}
+.bannerqy .titles li{padding:1px 0;background-color:#202020;}
+.bannerqy .titles li+li{border-top:1px solid #373735;}
+.bannerqy .titles li a{display:block;width:218px;text-align:center;color:#c6c6c6;font:14px/31px 'microsoft yahei';}
+.bannerqy .titles li.active a{color:#fff;background-color:#63b504;}
+.bannerqy .container{width:100%;height:410px;}
+
+.bannergame{position:relative;}
+.bannergame .container{height:720px;}
+.bannergame .lctrl,.bannergame .rctrl{position:absolute;z-index:3;top:308px;height:80px;cursor:pointer;background-color:#cf0f32;}
+.bannergame .rctrl{right:0;}
+.bannergame .lctrl i,.bannergame .rctrl i{display:block;float:left;height:80px;width:45px;background:url(img/game-prevNext.png) no-repeat 0 0;}
+.bannergame .lctrl:hover,.bannergame .rctrl:hover{background-color:#3c3d3f;}
+.bannergame .lctrl:hover .desc,.bannergame .rctrl:hover .desc{display:block;}
+.bannergame .lctrl i{background-position:19px 33px;}
+.bannergame .rctrl i{background-position:-21px 33px;}
+.bannergame .desc{float:left;display:none;width:250px;height:80px;}
+.bannergame .lctrl .desc{border-left:1px solid #767878;}
+.bannergame .rctrl .desc{border-right:1px solid #767878;}
+.bannergame .desc .img{float:left;width:80px;height:60px;margin:10px;}
+.bannergame .desc .img img{width:100%;height:100%;}
+.bannergame .desc .tit{overflow:hidden;margin-top:10px;line-height:32px;color:#fff;}
+.bannergame .desc .tit .bg,.bannergame .desc .tit .sm{overflow:hidden;height:32px;}
+.bannergame .desc .tit .bg{font-size:20px;font-weight:bold;}
+.bannergame .desc .tit .sm{font-size:13px;}
+</style>
+</head>
+<body>
+	<h2>网易云课堂 轮播</h2>
+	<div class="banner163">
+		<div class="container" id="cont-study"></div>
+	</div>
+
+	<h2>爱奇艺 轮播</h2>
+	<div class="bannerqy">
+		<div class="titles">
+			<ul class="ctrl">
+				<li><a>正直播：niconico超趴踢</a></li>
+				<li><a>明星的诞生:萌妹挑战地狱生存</a></li>
+				<li><a>灵域3：迷之女解禁寒冰灵界</a></li>
+				<li><a>另一个我收官：纵情罗马假日</a></li>
+				<li><a>美人为馅：杨蓉白宇悬爱解谜</a></li>
+				<li><a>超模预告:挑战世界第一大长腿</a></li>
+				<li><a>了不起:傲慢钢琴王子PK杰伦</a></li>
+				<li><a>幻城：梨落岚裳灵魂互换</a></li>
+				<li><a>安托万夫人：盛骏情挑韩艺瑟</a></li>
+				<li><a>文艺院线蜜桃成熟时</a></li>
+			</ul>
+		</div>
+		<div class="container" id="cont-qiyi"></div>
+	</div>
+
+	<h2>网易游戏 轮播</h2>
+	<div class="bannergame">
+		<div class="container" id="cont-game">
+			<div class="lctrl">
+				<i class="prev"></i>
+				<div class="desc" id="ldesc">
+				</div>
+			</div>
+			<div class="rctrl">			
+				<div class="desc" id="rdesc">
+				</div>
+				<i class="next"></i>
+			</div>
+		</div>		
+	</div>
+</body>
+<script src="../../base/js/util.js"></script>
+<script src="../../base/js/utility/slide.js"></script>
+<script>
+	// 云课堂轮播
+	!function(){
+		var colorData = ['#000','#ffba00','#191919','#020202','#36605f','#f6cad9'],
+			banner163 = $('.banner163',document.body),
+			slide163 = new Slide({
+			container:$('#cont-study'),
+			method:'fade',
+			autoplay:true,
+			duration:500,
+			prevNext:true,
+			data:[{
+					src:'http://nos.netease.com/edu-image/19e324c3-6aa7-4ec9-abb5-f9961d946d9d0.jpg?imageView&quality=100',
+					url:'',
+					alt:''
+				},{
+					src:'http://nos.netease.com/edu-image/25d7db60-2c60-47b4-bbe8-b8ced001ef8c0.jpg?imageView&quality=100',
+					url:'',
+					alt:''
+				},{
+					src:'http://nos.netease.com/edu-image/62BEA550BC5D952D0D0C6D3C0159524C.jpg',
+					url:'',
+					alt:''
+				},{
+					src:'http://nos.netease.com/edu-image/2E1DE8A4F8CE7B3C46D0758B10E37402.jpg',
+					url:'',
+					alt:''
+				},{
+					src:'http://nos.netease.com/edu-image/0bfd467f-7f4b-4c8a-9554-8b1f4a0540d1f.png',
+					url:'',
+					alt:''
+				},{
+					src:'http://nos.netease.com/edu-image/25cfc043-bcbe-4872-90d2-3aec06cd8a559.jpg?imageView&quality=100',
+					url:'',
+					alt:''
+				}]
+			
+			});
+		banner163.style.backgroundColor = colorData[0];
+		slide163.on('before.slide',function(index){
+			banner163.style.backgroundColor = colorData[index];
+		});
+		slide163.show();
+	}()
+
+	// 爱奇艺轮播
+	!function(){
+		var slideqy = new Slide({
+			container:$('#cont-qiyi'),
+			method:'fade',
+			autoplay:false,
+			prevNext:false,
+			duration:300,
+			hasCtrl:false,
+			data:[{
+					src:'http://pic9.qiyipic.com/common/lego/20161103/92eb899249d44f04b830d06c35cd0467.jpg?src=focustat_0_20130527_1',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic5.qiyipic.com/common/lego/20161103/c52505c89cfb4ee08670760aa2d96c3c.jpg?src=focustat_0_20130527_2',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic0.qiyipic.com/common/lego/20161102/7182af5e2c9c40b2bebe8ea3be4cd6ce.jpg?src=focustat_0_20130527_4',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic0.qiyipic.com/common/lego/20161103/093c71781ce14b7386c6738c55618ae4.jpg?src=focustat_0_20130527_5',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic0.qiyipic.com/common/lego/20161103/093c71781ce14b7386c6738c55618ae4.jpg?src=focustat_0_20130527_5',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic6.qiyipic.com/common/lego/20161103/4cb7361a66104c06ac2a3ff25db8a1f7.jpg?src=focustat_0_20130527_6',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic2.qiyipic.com/common/lego/20161103/119835f43370415681f67b6deaff45ef.jpg?src=focustat_0_20130527_7',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic2.qiyipic.com/common/lego/20161026/aee4ebd0bfed49eb827946cdaabbcc1c.jpg?src=focustat_0_20130527_8',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic1.qiyipic.com/common/lego/20161019/02ec8f65beff4b428f43ffbe95479dcd.jpg?src=focustat_0_20130527_9',
+					url:'',
+					alt:''
+				},{
+					src:'http://pic1.qiyipic.com/common/lego/20161103/7d800d75f2bf4c6aae8dbac354adc6c7.jpg?src=focustat_0_20130527_10',
+					url:'',
+					alt:''
+				}]
+		});
+		slideqy.show();
+		var bannerqy = $('.bannerqy');
+		var qyCtrls = $all('li',$('.titles',bannerqy));
+		util.addClass(qyCtrls[0],'active');
+		var qyIndex = 0,i;
+		slideqy.on('after.slide',function(index){
+			util.delClass(qyCtrls[qyIndex],'active');
+			util.addClass(qyCtrls[index],'active');
+			qyIndex = index;
+		});
+		for(i=0;i<qyCtrls.length;i++){//应该用代理的,示例就算了
+			qyCtrls[i].onmouseover = (function(i){
+				return function(){
+					slideqy.slide(i);
+				}
+			})(i);
+		}
+		var qytimer = setInterval(function(){
+			slideqy.slideNext();
+		},5000);
+		util.addEvent(bannerqy,'mouseover',function(){
+			clearInterval(qytimer);
+		});
+		util.addEvent(bannerqy,'mouseout',function(){
+			qytimer = setInterval(function(){
+				slideqy.slideNext();
+			},5000);
+		});
+	}()
+
+	//网易游戏轮播,网易游戏轮播为淡入淡出,因为此页面的几个演示都是淡出效果,因此把这个轮播改为滑动作为演示,要淡入淡出只需把method改为fadeInOut即可
+	!function(){
+		var data = [{
+			src:'http://res.nie.netease.com/r/pic/20161102/0b40e09b-e5c2-4cdb-b061-09ccd72e5850',
+			alt:'',
+			url:'http://gad.netease.com/mmad/click?s=EOP%2B6wT6GMx0zhhfibyxDnC9h0s%3D&project_id=12253890&monitor_type=4',
+			h2:'新角色巨魔王，盖世登场',
+			h3:'一怒震乾坤，杀气凝如山',
+			color:'white',
+			desc:'梦幻狂欢月，致谢青春礼！全新角色巨魔王盖世登场！抱团预约火爆新服，专属豪礼限时领取！'
+		},{
+			src:'http://res.nie.netease.com/r/pic/20161101/544caaee-9915-46d3-9717-71d6541d7e72',
+			alt:'',
+			url:'http://gad.netease.com/mmad/click?s=lx2mWVn0bGao6CTvjLsqyPzqxTc%3D&project_id=12510812&monitor_type=4',
+			h2:'骇浪横行资料片今日上线',
+			h3:'骇浪横行 自由无拘',
+			color:'dark',
+			desc:'网易首款航海冒险手游来了！《大航海之路》带你踏上星辰大海之旅！“骇浪横行”资料片全新钓鱼玩法，黄金航路，科林斯桂冠竞技，为你带来更加丰富刺激的真实航海冒险体验.'
+		},{
+			src:'http://res.nie.netease.com/r/pic/20161030/f058ded7-76e7-43ac-8f2d-036cc1de97f6',
+			alt:'',
+			url:'http://gad.netease.com/mmad/click?s=Sth4Rp13Xao6JrzPFBVtTFfeo6Y%3D&project_id=11739051&monitor_type=4',
+			h2:'多样社交 结缘三界',
+			h3:'倩女幽魂手游',
+			color:'dark',
+			desc:'新一代国民玄幻手游《倩女幽魂》10月全新版本来袭！新角色女甲士登场，多样社交新增比武招亲、结拜玩法，还有崭新春山如笑、万圣节时装，呆萌喵、青锋剑等时装坐骑，伴你云游四海！'
+		},{
+			src:'http://res.nie.netease.com/r/pic/20161027/cf4cef9d-d13b-40f7-a6e1-0d75519108a0',
+			alt:'',
+			url:'http://lzxxdn.163.com/',
+			h2:'来自星星的你',
+			h3:'万圣狂欢夜',
+			color:'dark',
+			desc:'韩国正版授权，店铺经营养成手游《来自星星的你》于10月27日~11月9日限时开启万圣狂欢夜主题活动！主题套装、限定单品、超值福利等全新惊喜等你来邂逅！'
+		},{
+			src:'http://res.nie.netease.com/r/pic/20161027/f4ac234e-7ad1-4aa2-9ab0-698905071f84',
+			alt:'',
+			url:'http://mwsj.163.com/',
+			h2:'迷雾世界 先锋首测',
+			h3:'这个世界充满奇遇',
+			color:'white',
+			desc:'《迷雾世界》是一款魔幻冒险MMO手游，秉承着网易精益求精的研发理念，由中美德韩国际顶级团队合作监制。圣光军团先锋首测今日开启！赶紧来加入冒险者的队伍吧！'
+		}];
+		var slide_game = new Slide({
+			data:data,
+			container:$('#cont-game'),
+			method:'fadeInOut',
+			duration:800,
+			hasCaption:true,
+		 	captionTpl:'<h2>${h2}</h2><h3>${h3}</h3><p>${desc}</p><i>查看详情</i>'
+		});
+		var descTpl ='<div class="img">\
+						<img src="${src}">\
+					</div>\
+					<div class="tit">\
+						<p class="bg">${h2}</p>\
+						<p class="sm">${h3}</p>\
+					</div>';
+		var ldesc = $('#ldesc'),
+			rdesc = $('#rdesc');
+		fillHtml(1,rdesc);
+		fillHtml(data.length-1,ldesc);	
+		slide_game.on('after.slide',function(index){
+			if(data[index].color === 'white'){
+				util.delClass(slide_game.caption,'dark');
+			}else{
+				util.addClass(slide_game.caption,'dark');
+			}
+			var prev = index===0?data.length-1:index-1,
+				next = index === data.length-1?0:index+1;
+			fillHtml(prev,ldesc);
+			fillHtml(next,rdesc);
+		});
+		slide_game.show();
+		//替换模板中的${...},得到html,填充ele
+		function fillHtml(index,ele){
+			var d = data[index];
+			ele.innerHTML = descTpl.replace(/\$\{([^\}]+)\}/g,function($1,$2){
+					return d[$2];
+				});
+		}
+		util.addEvent(ldesc.parentNode,'click',function(){
+			slide_game.slidePrev();
+		});
+		util.addEvent(rdesc.parentNode,'click',function(){
+			slide_game.slideNext();
+		});
+	}()
+</script>
+</html>

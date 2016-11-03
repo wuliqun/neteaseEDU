@@ -1,0 +1,46 @@
+/* 因为页面演示多个banner,因而加上了容器Id以示区分,使用时可以删掉 */
+/* 网易云课堂轮播 */
+#cont-study .m-sld{position:relative;overflow:hidden;height:100%;}
+#cont-study .m-sld .img{position:relative;height:100%;}
+#cont-study .m-sld .slide{position:absolute;width:100%;height:100%;}
+#cont-study .m-sld .slide.active{z-index:1;}
+#cont-study .m-sld .slide.hide{opacity:0;filter:alpha(opacity=0);}
+#cont-study .m-sld img{height:100%;width:960px;}
+#cont-study .m-sld .ctrl{position:absolute;z-index:2;bottom:30px;height:16px;width:100%;text-align:center;}
+#cont-study .m-sld .ctrl ul{display:inline-block;height:100%;}
+#cont-study .m-sld .ctrl ul:after{content:"";display:block;clear:both;height:0;visibility:hidden;}
+#cont-study .m-sld .ctrl li{float:left;width:8px;height:8px;margin-top:8px;cursor:pointer;text-indent:-9999px;background-color:#e3d9e1;}
+#cont-study .m-sld .ctrl li+li{margin-left:8px;}
+#cont-study .m-sld .ctrl li.active{height:16px;margin-top:0;background-color:#fff;transition:all .8s;}
+#cont-study .m-sld .prev,.m-sld .next{display:none;position:absolute;z-index:2;top:50%;margin-top:-35px;width:40px;height:70px;background: url(../img/sldbtn.png) no-repeat 0 0;}
+#cont-study .m-sld:hover .prev,.m-sld:hover .next{display:block;}
+#cont-study .m-sld .prev{left:250px;}
+#cont-study .m-sld .prev:hover{background-position:0 -95px;}
+#cont-study .m-sld .next{right:250px;background-position:-66px 0;}
+#cont-study .m-sld .next:hover{background-position:-66px -95px;}
+
+/* 爱奇艺轮播 */
+#cont-qiyi .m-sld{overflow:hidden;height:100%;}
+#cont-qiyi .m-sld .img{position:relative;height:100%;}
+#cont-qiyi .m-sld .slide{position:absolute;width:100%;height:100%;}
+#cont-qiyi .m-sld .slide.hide{opacity:0;filter:alpha(opacity=0);}
+#cont-qiyi .m-sld img{height:100%;width:100%;}
+
+/* 网易游戏轮播 */
+#cont-game .m-sld{position:relative;overflow:hidden;height:100%;}
+#cont-game .m-sld .img{position:relative;height:100%;}
+#cont-game .m-sld .slide{position:absolute;width:100%;height:100%;text-align:center;}
+#cont-game .m-sld .slide.active{z-index:1;}
+#cont-game .m-sld .slide.hide{opacity:0;filter:alpha(opacity=0);}
+#cont-game .m-sld img{height:820px;width:1920px;margin:-100px -100% 0;}
+#cont-game .m-sld .ctrl{position:absolute;z-index:2;right:74px;bottom:160px;height:20px;}
+#cont-game .m-sld .ctrl ul:after{content:"";display:block;clear:both;height:0;visibility:hidden;}
+#cont-game .m-sld .ctrl li{float:left;width:14px;height:14px;cursor:pointer;border:3px solid #fff;border-radius:50%;text-indent:-9999px;background-color:#fff;}
+#cont-game .m-sld .ctrl li+li{margin-left:10px;}
+#cont-game .m-sld .ctrl li.active,#cont-game .m-sld .ctrl li:hover{background-color:#cf0f32;}
+#cont-game .m-sld .caption{position:absolute;z-index:2;top:205px;left:84px;width:490px;color:#fff;}
+#cont-game .m-sld .caption.dark{color:#272a2c;}
+#cont-game .m-sld .caption h2,#cont-game .m-sld .caption h3{padding-bottom:20px;font-size:42px;font-weight:bold;line-height:44px;}
+#cont-game .m-sld .caption h3{border-bottom:1px solid #cf1132;}
+#cont-game .m-sld .caption p{margin-top:10px;font-size:15px;line-height:2;}
+#cont-game .m-sld .caption i{display:block;width:140px;margin-top:30px;border-radius:25px;line-height:50px;text-align:center;color:#fff;background-color:#cf0f32;}

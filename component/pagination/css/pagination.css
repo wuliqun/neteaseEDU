@@ -1,0 +1,28 @@
+
+/* 页面演示多个翻页器所以用了Id选择器 一般情况下是不用的 */
+
+/* 云课堂翻页器 */
+#cont-netease .m-page{float:right;}
+#cont-netease .m-page span{float:left;}
+#cont-netease .m-page .idx{float:left;display:block;height:20px;margin-left:8px;padding:0 6px;font-size:14px;line-height:20px;text-align:center;color:#666;}
+#cont-netease .m-page .idx:hover{cursor:pointer;background-color:#9dd8b1;}
+#cont-netease .m-page .idx.active{color:#39a030;cursor:default;background-color:transparent;}
+#cont-netease .m-page .prev,#cont-netease .m-page .next{width:30px;padding:0;color:#fff;font-size:16px;font-weight:bold;background-color:#9dd8b1}
+#cont-netease .m-page .prev.disable,.m-page .next.disable{background-color:#ddd;cursor:default;}
+
+/* 百度搜索翻页器 */
+#cont-baidu .m-page{float:left;}
+#cont-baidu .m-page span,#cont-baidu .m-page .idx.disable{display:none;}
+#cont-baidu .m-page .idx{float:left;display:block;line-height:34px;width:34px;border:1px solid #e1e2e3;cursor:pointer;text-align:center;font-size:12px;color:#00c;margin-right:9px;}
+#cont-baidu .m-page .idx:hover{border-color:#38f;background-color:#f2f8ff;}
+#cont-baidu .m-page .idx.active{border-color:transparent;background-color:transparent;color:#333;font-weight:bold;cursor:default;}
+#cont-baidu .m-page .idx.prev,#cont-baidu .m-page .idx.next{width:86px;}
+
+/* 爱奇艺视频翻页器 */
+#cont-qiyi .m-page{float:left;}
+#cont-qiyi .m-page .idx,#cont-qiyi .m-page span{float:left;display:block;line-height:28px;width:33px;border:1px solid #e3e3e3;border-radius:2px;cursor:pointer;text-align:center;font-size:14px;color:#333;margin-right:10px;}
+#cont-qiyi .m-page span{cursor:default;}
+#cont-qiyi .m-page .idx:hover{background-color:#f2f2f2;}
+#cont-qiyi .m-page .idx.active{border-color:#5f9000;background-color:#699e00;color:#fff;cursor:default;}
+#cont-qiyi .m-page .idx.disable{color:#999;cursor:default;background-color:#fff;}
+#cont-qiyi .m-page .idx.prev,#cont-qiyi .m-page .idx.next{width:58px;}

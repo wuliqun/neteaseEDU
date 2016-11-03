@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pagination demo</title>
+	<link rel="stylesheet" href="css/pagination.css">
+	<style>
+		body{
+			font-size:12px;
+			font-family:'microsoft yahei';
+		}
+		h2{
+			margin:20px 0;
+		}
+		.container{			
+			overflow:hidden;/*清除浮动*/
+			width:800px;
+			padding:10px;
+			border:1px solid #eee;			
+		}
+		
+	</style>
+</head>
+<body>
+	<h2>网易云课堂 翻页器</h2>
+	<div class="container" id="cont-netease"></div>
+	<h2>百度搜索 翻页器</h2>
+	<div class="container" id="cont-baidu"></div>
+	<h2>爱奇艺 翻页器</h2>
+	<div class="container" id="cont-qiyi"></div>
+</body>
+<script src="../../base/js/util.js"></script>
+<script src="pagination.js"></script>
+<script>
+	var page_netease = new Pagination({
+		container:$('#cont-netease'),
+		total:40,
+		length:7,
+		crt:1,
+		first:1
+	});
+	var page_baidu = new Pagination({
+		container:$('#cont-baidu'),
+		total:40,
+		length:10,
+		crt:5,
+		prevText:'<上一页',
+		nextText:'下一页>'
+	});
+	var page_qiyi = new Pagination({
+		container:$('#cont-qiyi'),
+		total:20,
+		length:8,
+		crt:7,
+		prevText:'上一页',
+		nextText:'下一页',
+		first:1,
+		last:2,
+		title:'跳转至第${index}页'
+	});
+	//翻页事件
+	page_baidu.on('turn',function(index){
+		//翻页逻辑代码
+		console.log(index);
+	});
+</script>
+</html>
