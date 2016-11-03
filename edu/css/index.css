@@ -139,7 +139,9 @@ body{min-width:1206px;background-color:#fff;}
 /* 通用模块 */
 /* slider模块 */
 .m-sld{height:100%;}
+.m-sld .img{height:100%;}
 .m-sld .slide{display:block;height:100%;}
+.m-sld .slide img{width:100%;height:100%;}
 .m-sld .slide.hide{opacity:0;filter:alpha(opacity=0);}
 .m-sld .ctrl{position:absolute;width:100%;height:10px;margin-top:-30px;text-align:center;}
 .m-sld .ctrl ul{height:10px;}
