@@ -324,7 +324,7 @@ util.template = (function(){
     };
 })();
 //添加 ajax
-util.ajax = (function(){
+(function(_){
    /*ajax封装
     *param格式{method:请求方式,默认GET,
     *       data:请求参数,
@@ -361,6 +361,26 @@ util.ajax = (function(){
             }
         }; 
     }
+    //IE8 跨域
+    function xdr(param){
+        var xdr = new XDomainRequest(),
+            data = param.data ? serialize(param.data) : null,
+            url = param.url;
+        if(!param.method || param.method === 'GET'){
+            if(data){
+                url += '?'+data;
+            }
+            xdr.open('GET',url);
+            xdr.send(null);
+        }else{
+            xdr.open('POST',url);
+            xdr.contentType = "application/x-www-form-urlencoded";
+            xdr.send(data);
+        }
+        xdr.onload = function(){
+            param.sucCallback&&param.sucCallback(xdr.responseText);
+        }
+    }
     //请求参数url编码
     function serialize(data){
         if(!data) return '';
@@ -375,8 +395,9 @@ util.ajax = (function(){
         }
         return pairs.join('&');
     }
-    return ajax;
-})();
+    _.ajax = ajax;
+    _.xdr = xdr;
+})(util);
 //添加move
 (function(util){
     /**

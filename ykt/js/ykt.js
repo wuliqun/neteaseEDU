@@ -84,29 +84,37 @@
 			label = $('label',search),
 			popContainer = $('.popcont',search);
 		util.addEvent(search,'click',function(){
-			input.focus();
-			util.addClass(search,'focus');
-			if(!!input.value){
-				util.delClass(popContainer,'hide');
-			}
+			input.focus();			
 		});
 		util.addEvent(input,'blur',function(){
-			input.value = '';
+			util.addClass(label,'novisi');
 			//延时隐藏,防止链接点不到
-			setTimeout(function(){
-				popContainer.innerHTML = '';				
-				util.delClass(label,'novisi');
+			setTimeout(function(){				
 				if(input !== document.activeElement){
 					//有可能是框内点击
-					util.delClass(search,'focus');
+					if(!input.value.trim()){
+						input.value = '';
+						util.delClass(label,'novisi');
+					}
+					util.delClass(search,'focus');			
+					util.addClass(popContainer,'hide');
 				}
 			},200)
 		});
-		util.addEvent(input,'input',oninput);
-		util.addEvent(input,'propertychange',oninput);
+		util.addEvent(input,'focus',function(){
+			util.addClass(search,'focus');
+			if(input.value){
+				util.delClass(popContainer,'hide');
+			}
+		});
+		if('oninput' in input){
+			util.addEvent(input,'input',oninput);		
+		}else{
+			util.addEvent(input,'propertychange',oninput);
+		}
 		function oninput(){
-			var value = input.value;
-			if(!value){
+			var value = input.value.trim();
+			if(value.length < 2){
 				util.addClass(popContainer,'hide');
 			}else{
 				util.delClass(popContainer,'hide');

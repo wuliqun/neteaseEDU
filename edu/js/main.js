@@ -42,20 +42,28 @@
 	}
 	//关注
 	function doFollow(){
-		util.ajax({
-			url:'https://study.163.com/webDev/attention.htm',
-			sucCallback:function(data){
-				if(data == '1'){
-					//成功,设置cookie
-					var expire = new Date();
-					expire.setYear(expire.getFullYear()+1);
-					util.setCookie('followSuc','1',expire);
-					//调用关注成功函数
-					followed();
-					util.removeEvent(follow,'click',followClick);
-				}
-			}
-		});
+		try{
+			util.ajax({
+				url:'https://study.163.com/webDev/attention.htm',
+				sucCallback:setFollowCookie
+			});
+		}catch(e){
+			util.xdr({
+				url:'https://study.163.com/webDev/attention.htm',
+				sucCallback:setFollowCookie
+			});
+		}
+	}
+	function setFollowCookie(data){
+		if(data == '1'){
+			//成功,设置cookie
+			var expire = new Date();
+			expire.setYear(expire.getFullYear()+1);
+			util.setCookie('followSuc','1',expire);
+			//调用关注成功函数
+			followed();
+			util.removeEvent(follow,'click',followClick);
+		}
 	}
 	//关注成功
 	function followed(){
@@ -108,8 +116,12 @@
 		data:{pageNo:1,psize:psize,type:10},
 		sucCallback:setCourses
 	}
-	//请求课程数据
-	util.ajax(params);
+	//请求课程数据	
+	try{
+		util.ajax(params);
+	}catch(e){
+		util.xdr(params);
+	}
 	//窗口大小改变时,更新psize,重载数据
 	util.addEvent(window,'resize',function(){
 		if(document.body.clientWidth < 1205){
@@ -120,7 +132,11 @@
 		if(params.data.psize != psize){
 			psize = params.data.psize;
 			//psize改变时,重新请求数据以适应页面
-			util.ajax(params);
+			try{
+				util.ajax(params);
+			}catch(e){
+				util.xdr(params);
+			}
 		}
 	});
 	var courseUl = $('#course'),//课程列表容器	
@@ -154,7 +170,11 @@
 	function turnPage(idx){
 		params.data.pageNo=idx;
 		params.data.type = (crtTabIndex+1)*10;
-		util.ajax(params);
+		try{
+			util.ajax(params);
+		}catch(e){
+			util.xdr(params);
+		}
 	}
 	// tab切换实现			
 	var crtTabIndex = 0;//当前tab		
@@ -167,7 +187,11 @@
 			params.data.pageNo = 1;
 			params.data.type = util.data(target,'type')-0;
 			crtTabIndex = (params.data.type-10)/10;
-			util.ajax(params);
+			try{
+				util.ajax(params);
+			}catch(e){
+				util.xdr(params);
+			}
 		}
 	}
 	util.addEvent(tabs,'click',tab);
@@ -216,7 +240,11 @@
 		//调用函数 设置列表滚动
 		hotScroll(hotBox.children[0],10);
 	}
-	util.ajax(hotParam);
+	try{
+		util.ajax(hotParam);
+	}catch(e){
+		util.xdr(hotParam);
+	}
 	/**
 	* [hotScroll 最热列表滚动,
 	* 思想:一共11个li,显示10个,top移动至-70px
@@ -246,6 +274,11 @@
 			li.innerHTML = util.template.merge(liSd,hotdata[index]);
 			hotOl.appendChild(li);
 		}
+	}
+	//IE8 xdr跨域
+	function xdr(params){
+		var xdr = new XDomainRequest();
+
 	}
 	/*---end最热列表逻辑---*/
 
