@@ -8,7 +8,7 @@
 		util.loadScript('js/utility/topInfo.js',function(){
 			var topinfo = new utility.TopInfo({
 				container:mInfo,
-				url:'/index-j.html',
+				url:'/edu/index-j.html',
 				msg:'本页面原生js编写，未使用任何第三方库、框架，您也可以点击查看jQuery+requireJs版本。'
 			});
 			topinfo.show();
