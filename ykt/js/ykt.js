@@ -1,6 +1,6 @@
 //banner轮播
 !function(){
-	var colorData = ['#30477b','#e70614','#282823','#9f7f99','#b0cbaa','#6e6d6e'],
+	var colorData = ['#000','#ffba00','#191919','#020202','#36605f','#f6cad9'],
 		banner = $('#banner'),
 		slide = new Slide({
 			container:$('.container',banner),
@@ -9,27 +9,27 @@
 			duration:500,
 			prevNext:true,
 			data:[{
-					src:'yktimg/banner163/banner1.jpg',
+					src:'http://nos.netease.com/edu-image/19e324c3-6aa7-4ec9-abb5-f9961d946d9d0.jpg?imageView&quality=100',
 					url:'',
 					alt:''
 				},{
-					src:'yktimg/banner163/banner2.jpg',
+					src:'http://nos.netease.com/edu-image/25d7db60-2c60-47b4-bbe8-b8ced001ef8c0.jpg?imageView&quality=100',
 					url:'',
 					alt:''
 				},{
-					src:'yktimg/banner163/banner3.jpg',
+					src:'http://nos.netease.com/edu-image/62BEA550BC5D952D0D0C6D3C0159524C.jpg',
 					url:'',
 					alt:''
 				},{
-					src:'yktimg/banner163/banner4.jpg',
+					src:'http://nos.netease.com/edu-image/2E1DE8A4F8CE7B3C46D0758B10E37402.jpg',
 					url:'',
 					alt:''
 				},{
-					src:'yktimg/banner163/banner5.jpg',
+					src:'http://nos.netease.com/edu-image/0bfd467f-7f4b-4c8a-9554-8b1f4a0540d1f.png',
 					url:'',
 					alt:''
 				},{
-					src:'yktimg/banner163/banner6.jpg',
+					src:'http://nos.netease.com/edu-image/25cfc043-bcbe-4872-90d2-3aec06cd8a559.jpg?imageView&quality=100',
 					url:'',
 					alt:''
 				}]			
