@@ -284,7 +284,7 @@
 		}else{
 			util.addClass(fixright,'hide');
 			util.addClass(fixnav,'hide');
-			util.addClass(fixlog,'hide');
+			util.addClass(fixlog,'novisi');
 			fixFlag[0] = 0;
 		}
 	}
