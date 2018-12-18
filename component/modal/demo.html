@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>modal demo</title>
+	<link rel="stylesheet" href="./modal.css">
+	<link rel="stylesheet" href="./animate.css">
+	<style>
+		.show{
+			width:140px;
+			height:30px;
+			margin:50px auto 0;
+			border:1px solid #333;
+			text-align:center;
+			line-height:30px;
+			background-color:#aaa;
+			cursor:pointer;
+		}
+		.show a{
+			display:block;
+			text-decoration:none;
+			color:#000;
+		}
+	</style>
+</head>
+<body>
+	<div class='show'>
+		<a href='#' id='trigger'>show modal</a>
+	</div>
+</body>
+<script src='./emitter.js'></script>
+<script src='./animate.js'></script>
+<script src='./modal.js'></script>
+<script>
+	var trigger = document.getElementById('trigger');
+	trigger.onclick = function(){
+		var m = new Modal({
+			title:'友情提示',
+			content:'这不是演习',
+			animation:{enter:'bounceIn',leave:'flipOutX'}
+		});
+		m.on('confirm',function(){
+			console.log('confirm');
+		});
+		m.on('cancel',function(){
+			console.log('cancel')
+		});
+		m.show();
+	}
+</script>
+</html>

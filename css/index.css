@@ -1,43 +1,11 @@
 body,td,th{font:16px/1.875 Arial,"microsoft yahei",Helvetica,sans-serif;}
 body{background-color:#fff;}
 .g-wrap{width:980px;margin:0 auto;}
-.m-topnav .logo,.u-stit{font-family:Arial,"Microsoft JhengHei","microsoft yahei",Helvetica,sans-serif;}
-
-/* 顶部导航 */
-.m-topnav{z-index:9;left:0;top:0;width:100%;border-bottom:1px solid #ddd;background-color:#fff;}
-.m-topnav .navbox{padding:15px 0;}
-.m-topnav .logo h1{text-indent:2px;font-size:35px;line-height:40px;color:#333;}
-.m-topnav .logo p{margin:16px 0 0 12px;font-size:18px;line-height:20px;color:#999;}
-.m-topnav .contact-info{margin-top:20px;font-size:14px;line-height:20px;}
-.m-topnav .contact-info li{float:left;margin-left:25px;}
-.m-topnav .contact-info span{position:absolute;width:20px;height:20px;background:url(../img/contact_sprite.jpg) no-repeat 0 0;}
-.m-topnav .contact-info p{margin-left:25px;}
-.m-topnav .contact-info .qq{background-position:0 -29px;}
-.m-topnav .contact-info .email{background-position:0 -57px;}
 
 /* section title元件 */
 .u-stit{margin-bottom:30px;text-align:center;}
 .u-stit h2{margin-bottom:8px;font-size:32px;line-height:40px;color:#333;}
 .u-stit p{font-size:25px;line-height:35px;color:#999;}
-/* 技能模块 */
-.m-skill{margin-top:70px;padding:40px 0 30px;}
-.m-skill .barbox{margin-bottom:20px;}
-.m-skill .bar{border-left:3px solid;}
-.m-skill .bar>p{text-indent:10px;font-size:16px;line-height:40px;}
-.m-skill .js{width:60%;color:#3498db;background-color:#d6efff;}
-.m-skill .htmlcss{width:50%;color:#3498db;background-color:#d6efff;}
-.m-skill .java{width:30%;color:#80bd01;background-color:#eaf6d0;}
-.m-skill .ps{width:30%;color:#fdbc40;background-color:#fff6dd;}
-.m-skill .desc{position:absolute;display:none;margin:-20px 0 0 200px;padding:8px;border:1px solid #ddd;border-radius:5px;font-size:14px;line-height:30px;color:#666;background-color:#fafafa;}
-.m-skill .bar:hover .desc{display:block;}
-.m-skill .desc li{margin-left:12px;}
-.m-skill .desc li:before{content:'';position:absolute;width:3px;height:3px;margin:13px 0 0 -8px;border-radius:50%;background-color:#000;}
-
-/* 前端之路 */
-.m-road{padding:40px 0 30px;background-color:#f1f1f1;}
-.m-road .desc{margin-bottom:20px;text-indent:32px;color:#666;}
-.m-road .micro{margin-left:500px;}
-.m-road .micro .microicon{margin-top:62px;}
 
 /* 实践项目 */
 .m-project{padding:40px 0 60px;}

@@ -1,0 +1,80 @@
+body,html{
+	margin:0;
+	padding:0;
+}
+.m-modal{
+	height:100%;
+	width:100%;
+	position:fixed;
+	left:0;
+	top:0;			
+	background-color:rgba(255,255,255,0.5);
+	text-align:center;
+	color:#aaa;
+}
+.m-modal .modal_align,.m-modal .modal_wrap{
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+	vertical-align:middle;
+}
+.m-modal .modal_align{
+	height:100%;
+	width:1px;
+	line-height:100%;
+}
+.m-modal .modal_wrap{
+	position:relative;
+	text-align:left;
+	width:400px;
+	-webkit-box-shadow:2px 2px 5px rgba(0,0,0,0.4);
+	box-shadow:2px 2px 5px rgba(0,0,0,0.4);
+	border-radius:3px;
+	overflow:hidden;
+}
+.m-modal .modal_head{
+	line-height:37px;
+	color:#fff;
+	background-color:#74bbee;
+	font-size:14px;
+	text-indent:20px;
+}
+.m-modal .modal_body{
+	font-size:18px;
+	line-height:24px;
+	font-weight:bold;
+	text-indent:22px;
+	margin:40px 0;
+}
+.m-modal .modal_foot{
+
+}
+.m-modal .modal_foot a{
+	line-height:38px;
+	box-sizing:border-box;
+	border-top:2px solid #eee;
+	display:block;
+	float:left;
+	width:50%;
+	text-align:center;
+	text-decoration:none;
+	cursor:pointer;
+}
+.m-modal .modal_foot a:hover{
+	transition:all ease-out 0.3s;
+}
+.m-modal .confirm{
+	color:#74bbee;
+	border-right:1px solid #eee;
+}
+.m-modal .confirm:hover{
+	background-color:#74bbee;
+	color:#fff;
+}
+.m-modal .cancel{
+	color:#999999;
+}
+.m-modal .cancel:hover{
+	background-color:#999999;
+	color:#fff;
+}

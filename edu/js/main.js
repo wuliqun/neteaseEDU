@@ -6,13 +6,13 @@
 		var mInfo = $('.m-topinfo',document.body).children[0];
 		//加载topInfo模块
 		util.loadScript('js/utility/topInfo.js',function(){
-			var topinfo = new utility.TopInfo({
+			var topinfo = new utility.TopInfo({ //ajax获取
 				container:mInfo,
-				url:'/edu/index-j.html',
-				msg:'本页面原生js编写，未使用任何第三方库、框架，您也可以点击查看jQuery+requireJs版本。'
+				url:'',
+				msg:'活动、广告等提示信息'
 			});
 			topinfo.show();
-			//关闭后设置cookie,一年过期时间
+			//关闭后设置cookie,过期时间为活动时间
 			topinfo.on('close',function(){
 				var expire = new Date();
 				expire.setYear(expire.getFullYear()+1);
